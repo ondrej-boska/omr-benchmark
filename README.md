@@ -1,6 +1,12 @@
 # omr-benchmark
 
-Benchmarks for OMR models on [MusiCorpus](../musicorpus/spec/musicorpus-specification.md) datasets. A benchmark compares a **gold** dataset with a **predicted** one. Both are MusiCorpus dataset folders, and the predicted one usually comes from running a [Musibot](../musibot/README.md) model or pipeline over the gold pages.
+## This repository is WiP
+
+Parts of the code in this repository were vibecoded and did not go through human code review as they were not used anywhere yet.
+
+--------------------------------------
+
+Benchmarks for OMR models on [MusiCorpus](https://github.com/OmniOMR/musicorpus/blob/main/spec/musicorpus-specification.md) datasets. A benchmark compares a **gold** dataset with a **predicted** one. Both are MusiCorpus dataset folders, and the predicted one usually comes from running a [Musibot](https://github.com/OmniOMR/musibot) model or pipeline over the gold pages.
 
 ```bash
 # 1. Predict: run a Musibot model over the test pages, one staff per execution
@@ -20,11 +26,11 @@ The two steps are independent. `evaluate` reads any folder laid out like the gol
 Python 3.12 or newer, which musicdiff requires:
 
 ```bash
-pip install -e "omr-benchmark"            # evaluate
-pip install -e "omr-benchmark[predict]"   # and predict, with the Musibot python client
+pip install -e .              # evaluate
+pip install -e ".[predict]"   # and predict, with the Musibot python client
 ```
 
-`musicorpus` and the Musibot client are on no package index, so pip installs them from git. In this repository, `pip install ./musicorpus` installs the local checkout instead.
+`musicorpus` and the Musibot client are on no package index, so pip installs them from git. To use a local checkout of `musicorpus` instead, `pip install path/to/musicorpus` first.
 
 
 ## Benchmarks
@@ -103,8 +109,8 @@ The CLI, the reports and the parallel scoring pick both up without further chang
 ## Tests
 
 ```bash
-pip install -e "omr-benchmark[dev,predict]"
-pytest omr-benchmark/tests
+pip install -e ".[dev,predict]"
+pytest
 ```
 
-The `predict` tests drive the client against the fake Musibot server of the client's own tests, so they need the `musibot` repository checked out beside this folder. Otherwise they're skipped.
+The `predict` tests drive the client against the fake Musibot server of the client's own tests, so they need the [musibot](https://github.com/OmniOMR/musibot) repository checked out beside this one (`../musibot`). Otherwise they're skipped.

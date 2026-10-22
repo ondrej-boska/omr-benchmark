@@ -7,6 +7,7 @@ name = "omr-benchmark"
 version = "0.1.0"
 description = "Benchmarks of OMR models on Musicorpus datasets: a gold dataset against predicted ones, e.g. made by a Musibot model."
 readme = "README.md"
+license = { text = "MIT" }
 requires-python = ">=3.12"
 dependencies = [
     "musicdiff>=6.0",  # OMR-NED; brings music21 and converter21
